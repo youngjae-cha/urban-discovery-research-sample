@@ -1,39 +1,59 @@
-# Urban discovery: selected research code and results
-
-**Selected research sample from an ongoing, unpublished study.** This sample contains selected code and results from an ongoing research project. The data behind the study and the complete research pipeline remain private.
+# Urban discovery: semantic analysis, review processing and selected results
 
 ## Research question
 
 Where do everyday urban places offer opportunities for exploration, discovery and learning, and how does their spatial availability relate to cities' intellectual and social life?
 
-The project analyzed 2019 Google Maps reviews of **382,361 places across 387 U.S. metropolitan areas and 34 broad venue types**. Review-based place scores identify discovery places relative to other places of the same type. Discovery coverage is the share of included places within 1 km of another discovery place in the same metropolitan area.
+The project analyzed Google Maps reviews posted in 2019 for **382,361 eligible places across 387 U.S. metropolitan areas and 34 broad venue types**. This repository exposes the actual text-analysis methods and selected archived results from this ongoing study. It includes **all 29 original semantic seed banks (275 prototype-sentence entries)**, the frozen text-feature policies and classifier program chain, annual duplicate-weighted aggregation, and spatial coverage code.
 
-## Selected results
+## Start with the executed notebooks
+
+- **[Methods walkthrough — executed](notebooks/METHODS_WALKTHROUGH_EXECUTED.ipynb):** reads the actual seed definitions and shows the original semantic-scoring, filtering, classification and aggregation functions. It performs source inspection without loading an encoder or processing reviews.
+- **[Selected results — executed](notebooks/SELECTED_RESULTS_EXECUTED.ipynb):** displays the existing metropolitan-pattern figure and redraws saved aggregate estimates. It does not fit new models.
+
+## How the text pipeline works
+
+```mermaid
+flowchart LR
+    A[Authorized review files] --> B[Clean text and encode with BGE]
+    B --> C[29 seed-based semantic scores]
+    C --> D[Align original text and saved scores]
+    D --> E[Count annual place-by-normalized-text duplicates]
+    E --> F[Eligibility and frozen classifiers]
+    F --> G[Weighted place scores and minimum 50 eligible clusters]
+    G --> H[Within-type high90 and same-metro 1 km coverage]
+```
+
+The historical encoder uses `BAAI/bge-large-en-v1.5`. For 27 dimensions, the direction is the positive-seed mean minus the negative-seed mean; the two SPANE dimensions use one seed centroid. The code retains the original cleaning, seed encoding, half-precision review encoding, 256-token review limit and cosine scoring. The eligibility policy and review classifier are separate stages. Exact normalized-text multiplicity is counted across the annual sources before eligibility filtering; positive eligible weighted mass is divided by eligible weighted mass.
+
+The original numerical computation is retained. Institutional paths and automatic encoder launch were replaced by explicit arguments in `semantic_analysis.py`. The alignment, enrichment, scorer-version chain, annual aggregation and spatial functions are complete, byte-for-byte copies of their bound source files. [METHOD_SOURCE_MAP.json](METHOD_SOURCE_MAP.json) records this distinction and the source hashes.
+
+## Source reading order
+
+| Stage | Actual source |
+|---|---|
+| Actual seed definitions, cleaning, centroid construction, encoder call and chunk processing | [semantic_analysis.py](code/review_pipeline/semantic_analysis.py) |
+| Original text–score alignment and row-key checks | [align_state_year_reviews.py](code/review_pipeline/align_state_year_reviews.py) |
+| Normalization, identity checks and complete-corpus duplicate accounting | [enrich_and_deduplicate_corpus.py](code/review_pipeline/enrich_and_deduplicate_corpus.py) |
+| Six text-context features and the exact generic-content flag | [text_context_features_v1_1.py](code/review_pipeline/text_context_features_v1_1.py) |
+| Attachment-specific feature policy | [t05_structural_features_v1_2.py](code/review_pipeline/t05_structural_features_v1_2.py) |
+| Final scorer entry point, inherited version contracts and numerical predictor | [score_multitarget_v1_2_7.py](code/review_pipeline/score_multitarget_v1_2_7.py), [v1.2.2 numerical scorer](code/review_pipeline/score_multitarget_v1_2_2.py), [base CLI](code/review_pipeline/score_multitarget_v1_1.py) |
+| Full annual aggregation and receipts | [aggregate_annual_four_targets.py](code/review_pipeline/aggregate_annual_four_targets.py) |
+| National within-type midpoint ranks, same-metro distance and self exclusion | [spatial_coverage.py](code/review_pipeline/spatial_coverage.py) |
+
+[METHODS_AND_INPUTS.md](METHODS_AND_INPUTS.md) explains the input contracts, source lineage and historical operational details. The earlier representative estimation and display functions remain in `code/`.
+
+## Representative archived results
 
 ![Actual metropolitan patterns](figures/01_actual_city_patterns.png)
 
-Each dot represents one of the 387 metropolitan areas. The left panel compares the share of discovery places with discovery coverage; the right panel shows the coverage distribution. This is an unchanged static figure based on actual study aggregates. Its metropolitan-level source table is withheld, so this figure cannot be regenerated from the sample.
+Each dot is one metropolitan area. This unchanged figure uses actual study aggregates; the city-level source frame remains private.
 
 ![Saved associations and weighting sensitivity](figures/02_saved_associations.png)
 
-The left panel shows four previously estimated, adjusted associations, with stored 95% confidence intervals. The attitude measure is a **sexual-orientation IAT**, with its sign reversed; it is not a measure of bias toward every minority group. The climate measure is an opinion composite, and innovation is represented by patent activity.
+These are saved adjusted associations and confidence intervals, not new estimates. The attitude measure is a sexual-orientation IAT with its sign reversed. Learning is sensitive to the survey respondent-aggregation choice: its interval includes zero under national respondent weights. These are associations rather than estimated intervention effects.
 
-The right panel retains a consequential sensitivity check: the learning estimate is smaller and its interval includes zero when national respondent weights are used to aggregate the survey responses. These are respondent-aggregation choices, not weights on cities in the regression. The figures describe associations and measurement sensitivity; they do not establish causal effects.
-
-## Representative code
-
-- `code/text_normalization_excerpt.py`: the unchanged normalization function used in the review pipeline, including Unicode normalization, punctuation handling and URL/email placeholders. The private context dictionaries and classifiers are omitted.
-- `code/spatial_coverage_excerpt.py`: unchanged original functions for within-type midpoint ranking, a 90th-percentile cutoff, same-metropolitan-area haversine distance, self exclusion, and direct distance checks. Legacy `2018` output-column names are retained from the original audit; they do not set the input year.
-- `code/estimation_excerpt.py`: unchanged original functions for within-sample standardization, HC1 uncertainty, t-based confidence intervals and full/reduced models on identical complete cases.
-- `code/result_figures.py`: the display functions used to redraw the selected saved estimates.
-
-The representative functions are available for inspection. They require authorized analysis frames, which are **not included**, and are not invoked on private data by the notebook. The text classifiers, semantic directions, filtering dictionaries and trained parameters are withheld. This sample does not classify reviews or reconstruct place scores.
-
-## Executed notebook and running it
-
-Open [`notebooks/SELECTED_RESULTS_EXECUTED.ipynb`](notebooks/SELECTED_RESULTS_EXECUTED.ipynb) to inspect completed cells and embedded figures. It reads only the two included summary CSVs, redraws the estimate figure and displays the static city figure. It does not refit regressions, train models or access external services.
-
-[Open the GitHub-rendered notebook directly](https://notebooks.githubusercontent.com/view/ipynb?browser=unknown_browser&bypass_fastly=true&color_mode=auto&commit=2a56b9fc9a12573722ce71195446b4ad44e2c121&device=unknown_device&docs_host=https%3A%2F%2Fdocs.github.com&enc_url=68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f796f756e676a61652d6368612f757262616e2d646973636f766572792d72657365617263682d73616d706c652f326135366239666339613132353733373232636537313139353434366234616434346532633132312f6e6f7465626f6f6b732f53454c45435445445f524553554c54535f45584543555445442e6970796e62&link_underline_enabled=true&logged_in=true&nwo=youngjae-cha%2Furban-discovery-research-sample&path=notebooks%2FSELECTED_RESULTS_EXECUTED.ipynb&platform=unknown_platform&repository_id=1440648804&repository_type=Repository&version=0#a78fede8-3280-4129-bbc4-6ec74c8ea859) if the embedded GitHub preview stalls. This view shows the same executed notebook, pinned to its original publication commit.
+## Run the public walkthroughs
 
 Tested with Python 3.13:
 
@@ -41,13 +61,24 @@ Tested with Python 3.13:
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
+python scripts/execute_methods.py
 python scripts/execute.py
 ```
 
-Re-execution refreshes the notebook, writes the estimate figure under `figures/`, and places an execution receipt under ignored `outputs/`.
+The first command executes source inspection and refreshes `METHODS_WALKTHROUGH_EXECUTED.ipynb`; the second refreshes the existing saved-result notebook and figure. Neither command requests embeddings, calls a language-model service or reads private study data.
 
-## Included and withheld material
+To use the processing programs with separately authorized inputs, install the optional dependencies in `requirements-methods.txt` and inspect their CLI arguments, for example:
 
-`results/` contains **four model-level estimates and two respondent-aggregation specifications**, limited to their labels, estimates, intervals and sample sizes. It contains no metropolitan analysis rows, individual reviews, reviewer identifiers, coordinates, survey responses or trained-model files. No private prompts, manuscripts, API credentials or institutional paths are included.
+```bash
+python code/review_pipeline/semantic_analysis.py --help
+python code/review_pipeline/align_state_year_reviews.py --help
+python code/review_pipeline/score_multitarget_v1_2_7.py --help
+```
 
-`PUBLIC_FILES.json` is the closed list of proposed public files. This is a selected research sample, not a complete replication package. No new license or rights in the underlying data are granted by this sample.
+Actual classification additionally requires the external frozen fitted artifact; aggregation requires its source manifests and receipts. These files are not distributed. The public walkthrough does not recreate the full study or certify bitwise historical execution.
+
+## Public scope
+
+Included: original method code, actual prototype seeds, fixed text dictionaries and rules, source hashes, selected previously published aggregate figures and estimate tables, and executed walkthroughs. No review text, reviewer or venue identifiers, row-level city or survey frames, learned classifier weights, centroid arrays, manuscripts, credentials or private execution logs are included. Field names used by the original code are retained; no actual identifier values are supplied.
+
+`PUBLIC_FILES.json` is the closed file manifest. The existing source files, MAIN and archived results are preserved. No additional rights in the underlying study data are granted by this code sample.

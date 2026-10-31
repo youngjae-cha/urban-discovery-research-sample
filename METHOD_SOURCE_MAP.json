@@ -1,0 +1,129 @@
+{
+  "scope": "Actual computational source with explicit original/public changes. No claim of new study execution.",
+  "files": [
+    {
+      "file": "code/review_pipeline/align_state_year_reviews.py",
+      "source_label": "align_state_year_reviews.py",
+      "source_sha256": "511bc7306fa99b0e6086753063def4bc4f092533ad873a467de14f744a05bafa",
+      "kind": "verbatim_complete_file",
+      "symbols": [],
+      "changes": []
+    },
+    {
+      "file": "code/review_pipeline/enrich_and_deduplicate_corpus.py",
+      "source_label": "enrich_and_deduplicate_corpus.py",
+      "source_sha256": "aa364ba93deb2aa529a5bf0a504c47ff1d94fbc05bf2e600910ecf1786834cde",
+      "kind": "verbatim_complete_file",
+      "symbols": [],
+      "changes": []
+    },
+    {
+      "file": "code/review_pipeline/text_context_features_v1_1.py",
+      "source_label": "text_context_features_v1_1.py",
+      "source_sha256": "372e116fc15442172fe931fdb8323cbef6b4c9ddac536fb1918605f11294662d",
+      "kind": "verbatim_complete_file",
+      "symbols": [],
+      "changes": []
+    },
+    {
+      "file": "code/review_pipeline/t05_structural_features_v1_2.py",
+      "source_label": "t05_structural_features_v1_2.py",
+      "source_sha256": "2553ac8dab835470d14126fec9ea631fb1b41a0514dcebfb59a5d526f4ba2713",
+      "kind": "verbatim_complete_file",
+      "symbols": [],
+      "changes": []
+    },
+    {
+      "file": "code/review_pipeline/score_multitarget_v1_1.py",
+      "source_label": "score_multitarget_v1_1.py",
+      "source_sha256": "68c6651a1bcf4654b0689d4b1e2f03212a7b2d2d29ed8067e30478a3a534d4dd",
+      "kind": "verbatim_complete_file",
+      "symbols": [],
+      "changes": []
+    },
+    {
+      "file": "code/review_pipeline/score_multitarget_v1_2_2.py",
+      "source_label": "score_multitarget_v1_2_2.py",
+      "source_sha256": "2cb996a1b09011caca7faf764fc5370e35045d99023df519a09002f3895618d4",
+      "kind": "verbatim_complete_file",
+      "symbols": [],
+      "changes": []
+    },
+    {
+      "file": "code/review_pipeline/score_multitarget_v1_2_3.py",
+      "source_label": "score_multitarget_v1_2_3.py",
+      "source_sha256": "211e8deb81a4bd0bf7ebbd2723cfc00594982845e5e71ba68220b569a2defbac",
+      "kind": "verbatim_complete_file",
+      "symbols": [],
+      "changes": []
+    },
+    {
+      "file": "code/review_pipeline/score_multitarget_v1_2_4.py",
+      "source_label": "score_multitarget_v1_2_4.py",
+      "source_sha256": "d02728ee7560262e2b10f9c25ac57d81866640222c41c2b812fdca5bab3d8125",
+      "kind": "verbatim_complete_file",
+      "symbols": [],
+      "changes": []
+    },
+    {
+      "file": "code/review_pipeline/score_multitarget_v1_2_5.py",
+      "source_label": "score_multitarget_v1_2_5.py",
+      "source_sha256": "8fbd4981c83279ab55bb7dac75cdb1046490ed3b0a5884083d9fa195ed04bc78",
+      "kind": "verbatim_complete_file",
+      "symbols": [],
+      "changes": []
+    },
+    {
+      "file": "code/review_pipeline/score_multitarget_v1_2_6.py",
+      "source_label": "score_multitarget_v1_2_6.py",
+      "source_sha256": "6f713a4a1301ed58323fe2a8822f4cd85c71cf7c555ec3c45e46b2a48cad0815",
+      "kind": "verbatim_complete_file",
+      "symbols": [],
+      "changes": []
+    },
+    {
+      "file": "code/review_pipeline/score_multitarget_v1_2_7.py",
+      "source_label": "score_multitarget_v1_2_7.py",
+      "source_sha256": "00ba81c66fb555d9f6b15538123c84f7d271362507fcc3164f2ee94973da0745",
+      "kind": "verbatim_complete_file",
+      "symbols": [],
+      "changes": []
+    },
+    {
+      "file": "code/review_pipeline/aggregate_annual_four_targets.py",
+      "source_label": "cc295ef3893a_aggregate_annual_four_targets_v1.py",
+      "source_sha256": "cc295ef3893a83c48d72c88b63b1360e8b49eedb4ef235ac0c4b06a4f0b75690",
+      "kind": "verbatim_complete_file",
+      "symbols": [],
+      "changes": []
+    },
+    {
+      "file": "code/review_pipeline/spatial_coverage.py",
+      "source_label": "frozen_reach_functions.py",
+      "source_sha256": "e1dafa78997a988a9d147564ab9977f4a69ff7691de7cbc3f6757c0122676326",
+      "kind": "verbatim_complete_file",
+      "symbols": [],
+      "changes": []
+    },
+    {
+      "file": "code/review_pipeline/semantic_analysis.py",
+      "source_label": "fc0a5339fa2d_final_script.py.bak",
+      "source_sha256": "fc0a5339fa2d7c5e5456cde6338a1fc7826c01be801c7e89e97cf378d9a35d4a",
+      "kind": "original_computation_with_public_entrypoint",
+      "symbols": [
+        "score_categories",
+        "clean_text",
+        "calculate_centroid_scores",
+        "centroid_loop",
+        "review_chunk_loop"
+      ],
+      "changes": [
+        "Original29 seed banks and numerical helper bodies retained.",
+        "Original chunk loop retained verbatim inside an explicit run function.",
+        "Institutional paths, GPU setup and auto-launch replaced by explicit CLI inputs.",
+        "Downstream raw-review displays and later exploratory notebook cells excluded."
+      ]
+    }
+  ],
+  "historical_execution_provenance": "Retrospective code and source hashes, not execution-time binary attestation."
+}

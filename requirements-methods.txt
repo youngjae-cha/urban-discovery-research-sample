@@ -1,0 +1,5 @@
+# Optional original-processing dependencies; the public walkthrough uses requirements.txt only.
+pyarrow==23.0.1
+duckdb
+torch==2.10.0
+sentence-transformers==5.3.0

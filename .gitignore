@@ -15,3 +15,13 @@ prompts/
 *.pt
 *.pth
 .env*
+
+# Source-review additions: keep runtime research material outside tracked files.
+/private_data/
+/private_runs/
+/replay_out/
+.env
+.env.*
+*.jsonl
+__pycache__/
+*.pyc
