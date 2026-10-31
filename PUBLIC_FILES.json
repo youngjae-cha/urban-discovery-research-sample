@@ -1,0 +1,82 @@
+{
+  "status": "PUBLIC_RESEARCH_SAMPLE",
+  "manifest_file": "PUBLIC_FILES.json",
+  "scope": "Selected actual research code, selected actual figures, executed figure-preview notebook, model-level summary cells only.",
+  "excluded": [
+    "raw reviews and reviewer identifiers",
+    "respondent and analysis-level records",
+    "agent and incident-level records",
+    "trained model weights",
+    "private prompts",
+    "credentials",
+    "original manuscripts",
+    "private execution logs and source paths"
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 171,
+      "sha256": "91bb873075e5b5b0aa12d8d41080e93a91dc6eecf883833e5164eae5d70a9bc6"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4615,
+      "sha256": "4afa29b16ea27c93a7c5693b6e106b0e6b8227c2814a8c7671a7edb248400712"
+    },
+    {
+      "path": "code/estimation_excerpt.py",
+      "bytes": 2711,
+      "sha256": "609108021601739d78f1160fe43cb7ffc67502510ecf9b920f81564fc1f19e67"
+    },
+    {
+      "path": "code/result_figures.py",
+      "bytes": 2150,
+      "sha256": "e6b06445248d4186f1619c1223290ad5b69a1a3a54fa07364eb2fe3ce75bfbab"
+    },
+    {
+      "path": "code/spatial_coverage_excerpt.py",
+      "bytes": 3514,
+      "sha256": "c40c34c244719c99b1ed0ad064b8aa0d44bed9eb2d310a139feb1d065703b8e1"
+    },
+    {
+      "path": "code/text_normalization_excerpt.py",
+      "bytes": 750,
+      "sha256": "df61724b2d2532e45992824738c7926b86927ef08029631671b3c96cdbb1e475"
+    },
+    {
+      "path": "figures/01_actual_city_patterns.png",
+      "bytes": 154212,
+      "sha256": "95be98f3b58703418e8cc4b9324cfdeaba75f2c0a93a153783b427c82386cea7"
+    },
+    {
+      "path": "figures/02_saved_associations.png",
+      "bytes": 90565,
+      "sha256": "883c53ebe2fcbf900d70c7e6d2282713cf2cc1e4d196c3bf834fe1140954efae"
+    },
+    {
+      "path": "notebooks/SELECTED_RESULTS_EXECUTED.ipynb",
+      "bytes": 337234,
+      "sha256": "501868728a51c799c02249be73972523c1065dfc444937e7e54b5bea0abf1f9c"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 151,
+      "sha256": "58c32a3b5b837c3fc1f37a4501982e81a7ae2370aa083328eb54f86b5e8e1a74"
+    },
+    {
+      "path": "results/selected_associations.csv",
+      "bytes": 342,
+      "sha256": "7d171cd946f99e13f50ca2daf2714c97fcf5f028eda2d625232fc9b9c9ed679f"
+    },
+    {
+      "path": "results/selected_weighting_sensitivity.csv",
+      "bytes": 215,
+      "sha256": "9bd6dbf876fab507f15735b260b5412a1236112b5d23bbba7893e6762b5ffa89"
+    },
+    {
+      "path": "scripts/execute.py",
+      "bytes": 2787,
+      "sha256": "91edb59ad2611c423d84b9748d5bbb7de5068b0b105f549bde555c3a3b1107b3"
+    }
+  ]
+}
