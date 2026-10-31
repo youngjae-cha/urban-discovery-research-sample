@@ -33,6 +33,8 @@ The representative functions are available for inspection. They require authoriz
 
 Open [`notebooks/SELECTED_RESULTS_EXECUTED.ipynb`](notebooks/SELECTED_RESULTS_EXECUTED.ipynb) to inspect completed cells and embedded figures. It reads only the two included summary CSVs, redraws the estimate figure and displays the static city figure. It does not refit regressions, train models or access external services.
 
+[Open the GitHub-rendered notebook directly](https://notebooks.githubusercontent.com/view/ipynb?browser=unknown_browser&bypass_fastly=true&color_mode=auto&commit=2a56b9fc9a12573722ce71195446b4ad44e2c121&device=unknown_device&docs_host=https%3A%2F%2Fdocs.github.com&enc_url=68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f796f756e676a61652d6368612f757262616e2d646973636f766572792d72657365617263682d73616d706c652f326135366239666339613132353733373232636537313139353434366234616434346532633132312f6e6f7465626f6f6b732f53454c45435445445f524553554c54535f45584543555445442e6970796e62&link_underline_enabled=true&logged_in=true&nwo=youngjae-cha%2Furban-discovery-research-sample&path=notebooks%2FSELECTED_RESULTS_EXECUTED.ipynb&platform=unknown_platform&repository_id=1440648804&repository_type=Repository&version=0#a78fede8-3280-4129-bbc4-6ec74c8ea859) if the embedded GitHub preview stalls. This view shows the same executed notebook, pinned to its original publication commit.
+
 Tested with Python 3.13:
 
 ```bash
